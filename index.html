@@ -1,16 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olho na Rua</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olho da Rua</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>👁️ Olho na Rua</h1>
-  <p>Protótipo funcional do aplicativo.</p>
-  <button id="botao">Clique aqui</button>
+    <div class="phone-container">
+        <div class="notch"></div>
+        <div class="screen">
+            <!-- Login Page -->
+            <div class="page active login-page" id="login-page">
+                <div class="logo">
+                    <div class="logo-icon">👁️</div>
+                </div>
+                <div class="app-title">Olho da Rua</div>
+                <div class="subtitle">Sua comunidade mais segura e conectada</div>
+                
+                <div class="input-group">
+                    <input type="text" placeholder="Login" id="login-input">
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Senha" id="password-input">
+                </div>
+                
+                <button class="btn btn-primary" id="login-btn">Login</button>
+                <a href="#" class="link" id="create-account-link">Criar uma conta</a>
+                
+                <div class="divider">Ou</div>
+                
+                <div class="social-buttons">
+                    <button class="btn-social btn-google" id="google-login">
+                        <span>G</span> Google
+                    </button>
+                    <button class="btn-social btn-facebook" id="facebook-login">
+                        <span>f</span> Facebook
+                    </button>
+                </div>
+            </div>
 
-  <script src="script.js"></script>
+            <!-- Map Page -->
+            <div class="page" id="map-page">
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-marker marker1" data-report="0"></div>
+                        <div class="map-marker marker2" data-report="1"></div>
+                        <div class="location-label">Citerna Burqui</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Report Page -->
+            <div class="page report-page" id="report-page">
+                <div class="page-header">
+                    <button class="back-btn" data-page="map-page">←</button>
+                    <div class="page-title">Nova Denúncia</div>
+                </div>
+
+                <div class="category-tabs">
+                    <button class="tab active" data-category="crime">Crime</button>
+                    <button class="tab" data-category="acidente">Acidente</button>
+                    <button class="tab" data-category="outro">Outro</button>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Endereço:</label>
+                    <textarea placeholder="Escreva aqui..." id="report-address"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Quando aconteceu?</label>
+                    <textarea placeholder="Escreva aqui..." id="report-when"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">O que aconteceu?</label>
+                    <textarea placeholder="Escreva aqui..." id="report-description"></textarea>
+                </div>
+
+                <div class="upload-btn" id="upload-media">
+                    <div class="upload-icon">🖼️</div>
+                    <div style="font-size: 12px; color: #999;">Foto ou Vídeo</div>
+                </div>
+
+                <button class="btn btn-primary" id="submit-report">Enviar</button>
+            </div>
+
+            <!-- Profile Page -->
+            <div class="page" id="profile-page">
+                <div class="profile-header">
+                    <div class="profile-pic">
+                        👤
+                        <span class="edit-profile" id="edit-profile-btn">Editar Conta</span>
+                    </div>
+                    <div class="profile-name" id="profile-name">Nome Completo</div>
+                </div>
+
+                <div class="profile-info">
+                    <div class="info-row">
+                        <span>Membro desde:</span>
+                        <span id="member-since">22/05/2010</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Bairro/Área:</span>
+                        <span id="neighborhood">Tatuapé</span>
+                    </div>
+                    <div class="info-row">
+                        <span>📞</span>
+                        <span id="phone-number">(11) 94723-8293</span>
+                    </div>
+                </div>
+
+                <div class="profile-info">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <div style="font-size: 13px; font-weight: 600; margin-bottom: 5px;">Reputação:</div>
+                        <div class="rating" id="user-rating">★★★★☆</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-notifications" id="notifications-btn">Notificações</button>
+                <button class="btn btn-logout" id="logout-btn">Sair da Conta</button>
+            </div>
+
+            <!-- Report Detail Page -->
+            <div class="page" id="detail-page">
+                <div class="page-header">
+                    <button class="back-btn" data-page="map-page">← Voltar</button>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-type" id="detail-type">Tipo: Crime</div>
+                    <div class="report-address" id="detail-address">Endereço: Rua Clarentino, 312</div>
+                    <div class="report-date" id="detail-date">Data: 2010 - 16:12</div>
+                    <div class="report-status" id="detail-status">0 relato autenticado</div>
+                    
+                    <div class="report-description" id="detail-description">
+                        Hoje, por volta das 19h00, vi dois homens entrarem no mercadinho da São Féres. Um deles sacou uma arma e levou todo o caixa, enquanto o outro pegava o dinheiro. Saí correndo logo depois. Todo eu estava armado, mas não tenho certeza porque foi tudo muito rápido.
+                    </div>
+
+                    <div class="comments-section">
+                        <div class="comments-title">Tem mais informações?</div>
+                        <textarea class="comment-input" placeholder="Escreva aqui..." id="additional-info"></textarea>
+                    </div>
+                </div>
+
+                <div class="verification-section">
+                    <div class="verification-question">A ocorrência é verdadeira?</div>
+                    <div class="verification-buttons">
+                        <button class="btn btn-yes" id="verify-yes">Sim</button>
+                        <button class="btn btn-no" id="verify-no">Não</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page" id="settings-page">
+                <div class="page-header">
+                    <button class="back-btn" data-page="profile-page">← Voltar</button>
+                    <div class="page-title">Notificações</div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="setting-item">
+                        <div class="setting-label">Alertas</div>
+                        <div class="toggle" id="toggle-alerts"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Acidentes</div>
+                        <div class="toggle" id="toggle-accidents"></div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="section-title">Preferências</div>
+                    <div class="setting-item">
+                        <div class="setting-label">Tema</div>
+                        <select class="select-field" id="theme-select">
+                            <option>Escuro</option>
+                            <option selected>Claro</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">Idioma</div>
+                        <select class="select-field" id="language-select">
+                            <option selected>Português</option>
+                            <option>English</option>
+                            <option>Español</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="section-title">Segurança e Privacidade</div>
+                    <div class="setting-item" id="terms-link">
+                        <div class="setting-label">Termos de uso</div>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="setting-item" id="privacy-link">
+                        <div class="setting-label">Política de privacidade</div>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="setting-item" id="report-problem-link">
+                        <div class="setting-label">Reportar Problema</div>
+                        <span class="arrow">›</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item" data-page="map-page">
+                    <div class="nav-icon">🗺️</div>
+                    <div class="nav-label">Mapa</div>
+                </div>
+                <div class="nav-item" data-page="report-page">
+                    <div class="nav-icon">➕</div>
+                    <div class="nav-label">Reportar</div>
+                </div>
+                <div class="nav-item" data-page="profile-page">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Perfil</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
