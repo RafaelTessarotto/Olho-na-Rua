@@ -103,10 +103,8 @@ function handleLogin() {
 // EVENT LISTENERS
 // ============================
 
-// Login button → goes to map
 document.getElementById("login-btn").addEventListener("click", handleLogin);
 
-// "Criar conta" link → could just alert for now or navigate to a sign-up page
 document
   .getElementById("create-account-link")
   .addEventListener("click", (e) => {
@@ -114,7 +112,6 @@ document
     alert("Função de criação de conta ainda não implementada!");
   });
 
-// Bottom navigation items
 document.querySelectorAll(".nav-item").forEach((item) => {
   item.addEventListener("click", () => {
     const target = item.getAttribute("data-page");
@@ -122,7 +119,6 @@ document.querySelectorAll(".nav-item").forEach((item) => {
   });
 });
 
-// Back buttons on pages (e.g., report page, settings)
 document.querySelectorAll(".back-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const target = btn.getAttribute("data-page");
@@ -130,12 +126,10 @@ document.querySelectorAll(".back-btn").forEach((btn) => {
   });
 });
 
-// Settings / notifications
 document.getElementById("notifications-btn").addEventListener("click", () => {
   navigateTo("settings-page");
 });
 
-// Logout
 document.getElementById("logout-btn").addEventListener("click", () => {
   appState.currentUser = null;
   navigateTo("login-page");
